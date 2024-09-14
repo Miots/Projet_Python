@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Réservation</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Formulaire de réservation</h1>
+    <form method="post" action="/reservation">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required><br><br>
+        <label for="depart">Depart :</label>
+        <select id="depart" name="depart" required>
+            <option value="">Sélectionnez une depart</option>
+            <option value="Mahajanga">Mahajanga</option>
+            <option value="Diego">Diego</option>
+            <option value="Toliara">Toliara</option>
+            <option value="Toamasina">Toamasina</option>
+            <option value="Fianarantsoa">Fianarantsoa</option>
+        </select><br><br>
+        <label for="destination">Destination :</label>
+        <select id="destination" name="destination" required>
+            <option value="">Sélectionnez une destination</option>
+            <option value="Mahajanga">Mahajanga</option>
+            <option value="Diego">Diego</option>
+            <option value="Toliara">Toliara</option>
+            <option value="Toamasina">Toamasina</option>
+            <option value="Fianarantsoa">Fianarantsoa</option>
+        </select><br><br>
+        <label for="date">Date :</label>
+        <input type="date" id="date" name="date" required><br><br>
+        <input type="submit" value="Réserver">
+    </form>
+    <h1>Réservations existantes</h1>
+    <ul>
+        {% for reservation in reservations %}
+            <li>Nom : {{ reservation['nom'] }}, Départ : {{ reservation['depart'] }}, Destination : {{ reservation['destination'] }}, Date : {{ reservation['date'] }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
